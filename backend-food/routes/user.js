@@ -47,8 +47,8 @@ router.post("/sign-up", async (req, res) => {
 });
 router.post("/login", async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const user = await Users.findOne({ username });
+    const { email, password } = req.body;
+    const user = await Users.findOne({ email });
     if (!user) {
       return res.status(401).json({ error: "Authentication failed" });
     }
