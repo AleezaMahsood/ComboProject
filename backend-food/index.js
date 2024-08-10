@@ -3,6 +3,7 @@ import { PORT,mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import protectedRoute from './routes/protectedRoute.js';
+import foodRoutes from './routes/foodRoutes.js';
 import jwt from 'jsonwebtoken';
 import verifyToken from "./middleware/authMiddleware.js";
 import { Users } from "./models/user.js";
@@ -18,7 +19,9 @@ app.get('/',(req,res)=>{
 //routes
 app.use("/users",userRoutes);
 app.use("/protected",protectedRoute);
-app.use("/favorites",favoriteRoutes);
+app.use("/food",foodRoutes);
+app.use("/images",express.static('uploads'))
+//app.use("/favorites",favoriteRoutes);
 
 //connection
 mongoose
