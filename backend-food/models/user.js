@@ -29,7 +29,7 @@ const user=new mongoose.Schema({
     },
     cart:[{
         type:mongoose.Types.ObjectId,
-        ref:"books"
+        ref:"food"
     }],
     orders:[{
         type:mongoose.Types.ObjectId,

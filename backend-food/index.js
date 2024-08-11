@@ -8,6 +8,7 @@ import foodRoutes from './routes/foodRoutes.js';
 import jwt from 'jsonwebtoken';
 import verifyToken from "./middleware/authMiddleware.js";
 import { Users } from "./models/user.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 //const user = require('../server/routes/user.js')
 const app=express()
@@ -23,7 +24,7 @@ app.use("/users",userRoutes);
 app.use("/protected",protectedRoute);
 app.use("/food",foodRoutes);
 app.use("/images",express.static('uploads'))
-//app.use("/favorites",favoriteRoutes);
+app.use("/cart",cartRoutes);
 
 //connection
 mongoose
