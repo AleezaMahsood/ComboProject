@@ -27,17 +27,15 @@ const user=new mongoose.Schema({
         default:"user",
         enum:["user","admin"],
     },
-    cart:[{
-        type:mongoose.Types.ObjectId,
-        ref:"food"
-    }],
+    cart:{
+        type:Object,
+        default:{},
+    },
     orders:[{
         type:mongoose.Types.ObjectId,
         ref:"orders"
     }],
 
 
-},{
-    timestamps:true
-});
+},{minimize:false});
 export const Users=mongoose.model("users",user);

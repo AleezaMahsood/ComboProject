@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import protectedRoute from './routes/protectedRoute.js';
 import foodRoutes from './routes/foodRoutes.js';
+import orderRoutes from "./routes/orderRoutes.js"
 import jwt from 'jsonwebtoken';
 import verifyToken from "./middleware/authMiddleware.js";
 import { Users } from "./models/user.js";
@@ -25,6 +26,7 @@ app.use("/protected",protectedRoute);
 app.use("/food",foodRoutes);
 app.use("/images",express.static('uploads'))
 app.use("/cart",cartRoutes);
+app.use("/order",orderRoutes);
 
 //connection
 mongoose
