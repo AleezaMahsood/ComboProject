@@ -9,7 +9,7 @@ import { StoreContext } from "../../context/StoreContext";
 import { assets } from "../../assets/frontend_assets/assets";
 const Navbar = () => {
   const [menu, setmenu] = useState("home");
-  const { token, updateToken } = useContext(StoreContext);
+  const { token, updateToken,getTotalCartAmount } = useContext(StoreContext);
    const Logout=()=>{
      localStorage.removeItem("token");
      updateToken("");
@@ -59,6 +59,7 @@ const Navbar = () => {
             <Link to="/cart">
               <img src={Basketicon} alt="Basket"></img>
             </Link>
+            <div className={getTotalCartAmount()?"":"dot"}></div>
             <div className="dot"></div>
           </div>
           {!token ? (
