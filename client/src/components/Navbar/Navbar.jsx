@@ -4,12 +4,13 @@ import Logo from "../../assets/frontend_assets/logo.png";
 import Searchicon from "../../assets/frontend_assets/search_icon.png";
 import Basketicon from "../../assets/frontend_assets/basket_icon.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import { assets } from "../../assets/frontend_assets/assets";
 const Navbar = () => {
   const [menu, setmenu] = useState("home");
   const { token, updateToken,getTotalCartAmount } = useContext(StoreContext);
+  const navigate=useNavigate()
    const Logout=()=>{
      localStorage.removeItem("token");
      updateToken("");
@@ -70,7 +71,7 @@ const Navbar = () => {
             <div className="navbar-profile">
               <img src={assets.profile_icon} alt="" />
               <ul className="nav-profile-dropdown">
-                <li>
+                <li onClick={()=>navigate('/myorders')}>
                   <img src={assets.bag_icon} alt=" " />
                   <p>Orders</p>
                 </li>

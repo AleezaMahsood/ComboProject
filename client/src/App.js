@@ -8,6 +8,8 @@ import Placeorder from './Pages/Placeorder/Placeorder';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import ExploreMenu from './components/ExploreMenu/ExploreMenu';
+import Verify from './Pages/Verify/Verify';
+import MyOrders from './Pages/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path='/sign-up' element={<Signup />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<Placeorder/>}/>
+          <Route path='/verify' element={<Verify />} />
+          <Route path='myorders' element={<MyOrders />} />
         </Routes> 
         </BrowserRouter>
 
