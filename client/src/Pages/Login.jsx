@@ -20,7 +20,6 @@ function Login() {
    const onLogin=async(event)=>{
         event.preventDefault();
         const response=await axios.post("http://localhost:5555/users/login",data);
-        console.log(response.data.token)
         if(response){
           updateToken(response.data.token)
           window.location.href="/"

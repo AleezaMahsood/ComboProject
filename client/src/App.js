@@ -7,6 +7,7 @@ import FoodDisplay from './components/FoodDisplay/FoodDisplay';
 import Placeorder from './Pages/Placeorder/Placeorder';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import ExploreMenu from './components/ExploreMenu/ExploreMenu';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/sign-in' element={<Login />} />
           <Route path='/sign-up' element={<Signup />} />
-          <Route path='/cart' element={<Cart />}/>
+          <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<Placeorder/>}/>
         </Routes> 
         </BrowserRouter>
