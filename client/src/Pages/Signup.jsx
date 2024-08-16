@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css';
 import plateImage from '../assets/signin.png'; 
+import axios from "axios"
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const[data,setData]=useState({
+    username:"",
+    email:"",
+    password:"",
+    address:""
+  })
+  const navigate=useNavigate()
+  const inputHandler=(event)=>{
+       const name=event.target.name;
+       const value=event.target.value;
+       setData(data=>({...data,[name]:value}))
+  }
+  const register=async(event)=>{
+    event.preventDefault();
+    const response=await axios.post("http://localhost:5555/users/sign-up",data);
+    if(response){
+       navigate("/sign-in")
+    }else{
+      alert(response.data.message)
+    }
+  }
   return (
     <div className="body">
     <div className="signup-container">
@@ -12,21 +35,21 @@ function Signup() {
         </div>
         <div className="form-container">
           <h2>Sign Up</h2>
-          <form>
+          <form onSubmit={register}>
             <div className="form-group">
               <label htmlFor="name"></label>
-              <input type="name" id="name" name="name" placeholder='Name' required />
+              <input type="name" id="username" name="username" onChange={inputHandler} value={data.username} placeholder='Name' required />
             </div>
             <div className="form-group">
               <label htmlFor="email"></label>
-              <input type="email" id="email" name="email" placeholder='Email' required />
+              <input type="email" id="email" name="email" onChange={inputHandler} value={data.email} placeholder='Email' required />
             </div>
             <div className="form-group">
               <label htmlFor="password"></label>
-              <input type="password" id="password" name="password" placeholder='Password' required />
+              <input type="password" id="password" name="password" onChange={inputHandler} value={data.password} placeholder='Password' required />
             </div>
             <button className='signbutton' type="submit">Sign Up</button>
-            <p>Already have an account? <span>Login here</span></p>
+           <Link to="/sign-in"><p>Already have an account? <span>Login here</span></p></Link>
           </form>
         </div>
       </div>
