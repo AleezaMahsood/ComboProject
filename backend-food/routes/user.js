@@ -9,7 +9,7 @@ const router = Router();
 // SIGN UP
 router.post("/sign-up", async (req, res) => {
   try {
-    const { username, email, password, address } = req.body;
+    const { username, email, password } = req.body;
     if (username.length < 4) {
       return res
         .status(400)
@@ -36,8 +36,7 @@ router.post("/sign-up", async (req, res) => {
     const newUser = new Users({
       username,
       email,
-      password: hashedPassword,
-      address,
+      password: hashedPassword
     });
     await newUser.save();
     return res.status(200).json({ message: "Sign Up Successful" });

@@ -14,10 +14,6 @@ const user=new mongoose.Schema({
         type:String,
         required:true,
     },
-    address:{
-        type:String,
-        required:true,
-    },
     avatar:{
         type:String,
         default:"https://pic.onlinewebfonts.com/thumbnails/icons_258083.svg",
