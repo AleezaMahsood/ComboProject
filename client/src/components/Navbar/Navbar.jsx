@@ -7,19 +7,22 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import { assets } from "../../assets/frontend_assets/assets";
+
 const Navbar = () => {
   const [menu, setmenu] = useState("home");
-  const { token, updateToken,getTotalCartAmount } = useContext(StoreContext);
-  const navigate=useNavigate()
-   const Logout=()=>{
-     localStorage.removeItem("token");
-     updateToken("");
-     window.location.href="/"
-   }
+  const { token, updateToken, getTotalCartAmount } = useContext(StoreContext);
+  const navigate = useNavigate();
+
+  const Logout = () => {
+    localStorage.removeItem("token");
+    updateToken("");
+    navigate("/");
+  };
+
   return (
     <div>
       <div className="navbar">
-        <img src={Logo} alt="logo" className="logo"></img>
+        <img src={Logo} alt="logo" className="logo" />
         <ul className="navbar-menu">
           <Link to="/">
             <li
@@ -55,12 +58,12 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="navbar-right">
-          <img src={Searchicon} alt="search"></img>
+          <img src={Searchicon} alt="search" />
           <div className="navbar-search-icon">
             <Link to="/cart">
-              <img src={Basketicon} alt="Basket"></img>
+              <img src={Basketicon} alt="Basket" />
             </Link>
-            <div className={getTotalCartAmount()?"":"dot"}></div>
+            <div className={getTotalCartAmount() ? "" : "dot"}></div>
             <div className="dot"></div>
           </div>
           {!token ? (
@@ -71,7 +74,7 @@ const Navbar = () => {
             <div className="navbar-profile">
               <img src={assets.profile_icon} alt="" />
               <ul className="nav-profile-dropdown">
-                <li onClick={()=>navigate('/myorders')}>
+                <li onClick={() => navigate('/myorders')}>
                   <img src={assets.bag_icon} alt=" " />
                   <p>Orders</p>
                 </li>
